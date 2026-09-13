@@ -12,7 +12,7 @@ The engine has no React, DOM, Tailwind, browser storage, or native runtime depen
 Install the versioned first-release archive with one command:
 
 ```bash
-pnpm add https://github.com/acccount1982-star/engine/releases/download/v0.1.0/lengend-nightmare-engine-0.1.0.tgz
+pnpm add https://github.com/acccount1982-star/engine/raw/v0.1.0/releases/lengend-nightmare-engine-0.1.0.tgz
 ```
 
 The URL is intentionally tied to a versioned release archive so applications can pin the engine and upgrade deliberately.
