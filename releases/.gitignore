@@ -1,1 +1,3 @@
 *.tgz
+*.tgz.sha256
+*.md
