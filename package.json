@@ -45,10 +45,13 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "tsx --test test/*.test.ts",
     "prepack": "pnpm run build",
-    "pack:release": "pnpm run build && node scripts/pack-release.mjs"
+    "pack:release": "node scripts/pack-release.mjs",
+    "release:prepare": "pnpm run typecheck && pnpm test && pnpm run pack:release && node scripts/prepare-release.mjs",
+    "release:check": "node scripts/prepare-release.mjs --check"
   },
   "devDependencies": {
-    "@types/node": "catalog:",
-    "tsx": "catalog:"
+    "@types/node": "^25.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "~5.9.3"
   }
 }
