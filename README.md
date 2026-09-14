@@ -63,9 +63,9 @@ Release preparation lives in `CHANGELOG.md`, with the current package version tr
 
 1. Set the new version in `package.json` and add the matching `## [version]` section to `CHANGELOG.md`.
 2. Run `pnpm install`, then commit and push those changes to the repository's default branch.
-3. Run the **Publish engine release** workflow from GitHub Actions.
+3. From an authenticated clone with GitHub CLI installed, run `pnpm run release:publish`.
 
-The workflow runs typechecking and tests, builds and smoke-tests a clean package archive, synchronizes this README and the engine website from the package version, commits the archive and generated notes, updates the matching `v<version>` tag, and creates or updates the GitHub release. Archives are served from an immutable tagged raw URL because that public path works without the separate GitHub release-asset upload host.
+The publish command runs typechecking and tests, builds and smoke-tests a clean package archive, synchronizes this README from the package version, commits the archive and generated notes, updates the matching `v<version>` tag, pushes it, and creates or updates the GitHub release. When run from the monorepo, release preparation also synchronizes the engine website. Archives are served from an immutable tagged raw URL because that public path works without the separate GitHub release-asset upload host.
 
 Run `pnpm run release:prepare` locally to perform the same checks and generation, or `pnpm run release:check` to verify that generated release metadata is current. The source, changelog, and release history are available in the [GitHub repository](https://github.com/acccount1982-star/engine). The package is distributed under the [MIT license](./LICENSE), which permits commercial use, modification, redistribution, and sublicensing with the copyright and permission notice retained.
 
