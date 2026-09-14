@@ -9,7 +9,7 @@ The engine has no React, DOM, Tailwind, browser storage, or native runtime depen
 
 ## Install
 
-Install the versioned first-release archive with one command:
+Install the current versioned archive with one command:
 
 ```bash
 pnpm add https://github.com/acccount1982-star/engine/raw/v0.1.0/releases/lengend-nightmare-engine-0.1.0.tgz
@@ -59,7 +59,15 @@ For real-time play, create an arena with `createRealTimeArena`, send `arena.set-
 
 `pnpm run build` emits JavaScript and declaration files to `dist/`. The package is intentionally independent from the game clients so a future app, editor, or renderer can consume the same simulation contract.
 
-Release preparation lives in `CHANGELOG.md`, with the current package version tracked in `package.json`. Run `pnpm run pack:release` to build the package and write a versioned archive to `releases/`. The source, changelog, and release history are available in the [GitHub repository](https://github.com/acccount1982-star/engine). The package is distributed under the [MIT license](./LICENSE), which permits commercial use, modification, redistribution, and sublicensing with the copyright and permission notice retained.
+Release preparation lives in `CHANGELOG.md`, with the current package version tracked in `package.json`. To publish a release:
+
+1. Set the new version in `package.json` and add the matching `## [version]` section to `CHANGELOG.md`.
+2. Run `pnpm install`, then commit and push those changes to the repository's default branch.
+3. Run the **Publish engine release** workflow from GitHub Actions.
+
+The workflow runs typechecking and tests, builds and smoke-tests a clean package archive, synchronizes this README and the engine website from the package version, commits the archive and generated notes, updates the matching `v<version>` tag, and creates or updates the GitHub release. Archives are served from an immutable tagged raw URL because that public path works without the separate GitHub release-asset upload host.
+
+Run `pnpm run release:prepare` locally to perform the same checks and generation, or `pnpm run release:check` to verify that generated release metadata is current. The source, changelog, and release history are available in the [GitHub repository](https://github.com/acccount1982-star/engine). The package is distributed under the [MIT license](./LICENSE), which permits commercial use, modification, redistribution, and sublicensing with the copyright and permission notice retained.
 
 ## Originality
 
